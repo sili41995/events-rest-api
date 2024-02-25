@@ -99,17 +99,6 @@ const updateProfileSchema = Joi.object({
     'object.min': ErrorMessages.missingFieldsErr,
   });
 
-const updatePasswordSchema = Joi.object({
-  password: passwordSettings.required(),
-  passwordRepeat: passwordRepeatSettings.required(),
-});
-
 const User = model<IUser>('user', userSchema);
 
-export {
-  User,
-  signUpSchema,
-  signInSchema,
-  updateProfileSchema,
-  updatePasswordSchema,
-};
+export { User, signUpSchema, signInSchema, updateProfileSchema };
