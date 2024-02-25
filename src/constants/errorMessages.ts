@@ -17,8 +17,7 @@ const enum ErrorMessages {
   // timeFeatureErr: 'The time is in the future',
   // amountRequiredErr: 'Missing required amount field',
   // timeRequiredErr: 'Missing required time field',
-  // invalidDateErr:
-  // 'To get monthly progress, you need to specify the valid year and month',
+  invalidDateErr = 'To get monthly progress, you need to specify the valid year and month',
 }
 
 export default ErrorMessages;

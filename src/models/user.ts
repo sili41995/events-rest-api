@@ -8,6 +8,7 @@ import {
   DefaultAvatarsURL,
 } from '../constants';
 import { IUser } from '../types/types';
+import ModelNames from './modelNames';
 
 const { emailRegExp, notEmptyValueRegExp } = regExp;
 
@@ -99,6 +100,6 @@ const updateProfileSchema = Joi.object({
     'object.min': ErrorMessages.missingFieldsErr,
   });
 
-const User = model<IUser>('user', userSchema);
+const User = model<IUser>(ModelNames.user, userSchema);
 
 export { User, signUpSchema, signInSchema, updateProfileSchema };

@@ -1,8 +1,9 @@
 import { Schema, model } from 'mongoose';
 import Joi from 'joi';
 import { preUpdate, handleMongooseError } from './hooks';
-import { regExp, ErrorMessages } from '../constants';
+import { ErrorMessages } from '../constants';
 import { IEvent } from '../types/types';
+import ModelNames from './modelNames';
 
 const eventSchema = new Schema<IEvent>(
   {
@@ -17,6 +18,10 @@ const eventSchema = new Schema<IEvent>(
     completed: {
       type: Boolean,
       default: false,
+    },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: ModelNames.user,
     },
   },
   { versionKey: false, timestamps: true }
@@ -36,6 +41,6 @@ const addSchema = Joi.object({
   completed: Joi.boolean(),
 });
 
-const Event = model<IEvent>('event', eventSchema);
+const Event = model<IEvent>(ModelNames.event, eventSchema);
 
 export { Event, addSchema };

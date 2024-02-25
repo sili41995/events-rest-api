@@ -27,6 +27,7 @@ export interface IEvent {
   deadline: string;
   task: string;
   completed: boolean;
+  owner?: ObjectId;
 }
 
 export interface IRegExp {
@@ -40,6 +41,10 @@ export interface IRequest extends Request {
 
 export interface IAuthRequest extends IRequest {
   body: IUser;
+}
+
+export interface IEventsRequest extends IRequest {
+  body: IEvent;
 }
 
 export interface IDecodedToken {
@@ -59,4 +64,29 @@ export interface IUpdatePasswordProps {
   currentPassword: string;
   password: string;
   passwordOutdated: string | undefined;
+}
+
+export interface IGetFindFilterProps {
+  owner: ObjectId;
+  query: {
+    page?: string;
+    limit?: string;
+    completed?: string;
+  };
+}
+
+export interface IFilter {
+  owner: ObjectId;
+  completed?: string;
+}
+
+export interface IFindFilter {
+  skip: number;
+  limit: number;
+  findFilter: IFilter;
+}
+
+export interface IGetIsValidDateProps {
+  year: number;
+  month: number;
 }

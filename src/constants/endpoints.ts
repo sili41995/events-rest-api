@@ -6,6 +6,8 @@ const enum Endpoints {
   current = '/current',
   profile = '/profile',
   avatars = '/avatars',
+  monthly = '/monthly',
+  eventId = 'eventId',
 }
 
 export default Endpoints;
