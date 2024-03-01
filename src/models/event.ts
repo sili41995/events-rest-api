@@ -12,7 +12,7 @@ const eventSchema = new Schema<IEvent>(
       required: [true, ErrorMessages.taskRequiredErr],
     },
     deadline: {
-      type: String,
+      type: Date,
       required: [true, ErrorMessages.deadlineRequiredErr],
     },
     completed: {

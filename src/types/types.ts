@@ -24,7 +24,7 @@ export interface IUser {
 export interface IEvent {
   // [key: string]: ObjectId | string | boolean | undefined;
   _id: ObjectId;
-  deadline: string;
+  deadline: Date;
   task: string;
   completed: boolean;
   owner?: ObjectId;
@@ -89,4 +89,15 @@ export interface IFindFilter {
 export interface IGetIsValidDateProps {
   year: number;
   month: number;
+}
+
+export interface IGetMatchByTimeStageProps {
+  year: number;
+  month: number;
+  owner: ObjectId;
+}
+
+export interface IGetFinalDate {
+  month: number;
+  year: number;
 }

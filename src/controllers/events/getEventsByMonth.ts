@@ -2,6 +2,8 @@ import { Response, NextFunction } from 'express';
 import { IRequest, IUser } from '../../types/types';
 import { ErrorMessages } from '../../constants';
 import { getIsValidDate, httpError } from '../../utils';
+import { getMatchByTimeStage, getSortByTimeStage } from './aggregationStages';
+import { Event } from '../../models/event';
 
 const getEventsByMonth = async (
   req: IRequest,
@@ -22,6 +24,16 @@ const getEventsByMonth = async (
       message: ErrorMessages.invalidDateErr,
     });
   }
+
+  const matchByTimeStage = getMatchByTimeStage({
+    month: Number(month),
+    year: Number(year),
+    owner,
+  });
+  const sortByTimeStage = getSortByTimeStage();
+  const result = await Event.aggregate([matchByTimeStage, sortByTimeStage]);
+
+  res.status(200).json(result);
 };
 
 export default getEventsByMonth;
