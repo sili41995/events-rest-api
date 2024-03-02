@@ -20,12 +20,14 @@ const router = express.Router();
 
 router.post(
   Endpoints.signup,
+  upload.single(ProfileSettings.imgField),
   validateBody(validBodySchema),
   validateBody(signUpSchema),
   signUp
 );
 router.post(
   Endpoints.signin,
+
   validateBody(validBodySchema),
   validateBody(signInSchema),
   signIn
