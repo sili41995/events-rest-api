@@ -27,7 +27,6 @@ router.post(
 );
 router.post(
   Endpoints.signin,
-
   validateBody(validBodySchema),
   validateBody(signInSchema),
   signIn
