@@ -1,6 +1,7 @@
 const enum ErrorMessages {
   emptyStringErr = 'Value cannot be the empty string',
   missingFieldsErr = 'Missing fields',
+  nameRequiredErr = 'Missing required name field',
   emailRegExpErr = 'Email must be letters, digits, dot and @',
   emailRequiredErr = 'Missing required email field',
   passwordRequiredErr = 'Missing required password field',
@@ -14,9 +15,6 @@ const enum ErrorMessages {
   incorrectCredentialsErr = 'Email or password is wrong',
   missingFileErr = 'File is absent',
   wrongPasswordErr = 'Password is wrong',
-  // timeFeatureErr: 'The time is in the future',
-  // amountRequiredErr: 'Missing required amount field',
-  // timeRequiredErr: 'Missing required time field',
   invalidDateErr = 'To get monthly progress, you need to specify the valid year and month',
 }
 

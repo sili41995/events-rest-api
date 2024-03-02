@@ -14,6 +14,10 @@ const { emailRegExp, notEmptyValueRegExp } = regExp;
 
 const userSchema = new Schema<IUser>(
   {
+    name: {
+      type: String,
+      required: [true, ErrorMessages.nameRequiredErr],
+    },
     email: {
       type: String,
       match: [emailRegExp, ErrorMessages.emailRegExpErr],
@@ -36,10 +40,6 @@ const userSchema = new Schema<IUser>(
     avatar: {
       type: String,
       default: DefaultAvatarsURL.user,
-    },
-    name: {
-      type: String,
-      match: [notEmptyValueRegExp, ErrorMessages.emptyStringErr],
     },
   },
   { versionKey: false, timestamps: true }
