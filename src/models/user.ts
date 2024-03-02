@@ -49,6 +49,10 @@ userSchema.pre('findOneAndUpdate', preUpdate);
 userSchema.post('save', handleMongooseError);
 userSchema.post('findOneAndUpdate', handleMongooseError);
 
+const nameSettings = Joi.string().messages({
+  'any.required': ErrorMessages.nameRequiredErr,
+});
+
 const emailSettings = Joi.string().pattern(emailRegExp).messages({
   'any.required': ErrorMessages.emailRequiredErr,
   'string.pattern.base': ErrorMessages.emailRegExpErr,
@@ -73,6 +77,7 @@ const passwordRepeatSettings = Joi.string()
   });
 
 const signUpSchema = Joi.object({
+  name: nameSettings.required(),
   email: emailSettings.required(),
   password: passwordSettings.required(),
   passwordRepeat: passwordRepeatSettings.required(),
