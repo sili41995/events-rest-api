@@ -24,13 +24,13 @@ router.post(
   add
 );
 router.get(Endpoints.monthly, getEventsByMonth);
-router.get(`/:${Endpoints.eventId}`, isValidId, getById);
+router.get(`/:${Endpoints.dynamicId}`, isValidId, getById);
 router.put(
-  `/:${Endpoints.eventId}`,
+  `/:${Endpoints.dynamicId}`,
   isValidId,
   validateBody(validBodySchema),
   updateById
 );
-router.delete(`/:${Endpoints.eventId}`, isValidId, deleteById);
+router.delete(`/:${Endpoints.dynamicId}`, isValidId, deleteById);
 
 export default router;

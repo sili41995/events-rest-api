@@ -1,6 +1,6 @@
 import { NextFunction, Response } from 'express';
 import { IEventsRequest, IUser } from '../../types/types';
-import { FindFilters } from '../../constants';
+import { Endpoints, FindFilters } from '../../constants';
 import { Event } from '../../models/event';
 import { ctrlWrapper, httpError } from '../../utils';
 
@@ -10,7 +10,7 @@ const updateById = async (
   next: NextFunction
 ): Promise<void> => {
   const { _id: owner } = req.user as IUser;
-  const { entryId: _id } = req.params;
+  const _id = req.params[Endpoints.dynamicId];
 
   const result = await Event.findOneAndUpdate({ _id, owner }, req.body).select(
     FindFilters.eventFilter

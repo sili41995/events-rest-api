@@ -7,7 +7,7 @@ const enum Endpoints {
   profile = '/profile',
   avatars = '/avatars',
   monthly = '/monthly',
-  eventId = 'eventId',
+  dynamicId = 'dynamicId',
 }
 
 export default Endpoints;

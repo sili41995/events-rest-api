@@ -1,6 +1,6 @@
 import { Response, NextFunction } from 'express';
 import { IRequest, IUser } from '../../types/types';
-import { FindFilters } from '../../constants';
+import { Endpoints, FindFilters } from '../../constants';
 import { Event } from '../../models/event';
 import { ctrlWrapper, httpError } from '../../utils';
 
@@ -10,7 +10,7 @@ const deleteById = async (
   next: NextFunction
 ): Promise<void> => {
   const { _id: owner } = req.user as IUser;
-  const { entryId: _id } = req.params;
+  const _id = req.params[Endpoints.dynamicId];
 
   const result = await Event.findOneAndDelete({ _id, owner }).select(
     FindFilters.eventFilter
