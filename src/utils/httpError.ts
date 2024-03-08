@@ -15,6 +15,7 @@ const httpError = ({
 }: IHttpError): IHttpError => {
   const error = new Error(message) as Error & IHttpError;
   error.status = status;
+
   return error;
 };
 

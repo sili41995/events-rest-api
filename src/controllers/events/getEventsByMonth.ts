@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express';
 import { IRequest, IUser } from '../../types/types';
 import { ErrorMessages } from '../../constants';
-import { getIsValidDate, httpError } from '../../utils';
+import { ctrlWrapper, getIsValidDate, httpError } from '../../utils';
 import { getMatchByTimeStage, getSortByTimeStage } from './aggregationStages';
 import { Event } from '../../models/event';
 
@@ -36,4 +36,4 @@ const getEventsByMonth = async (
   res.status(200).json(result);
 };
 
-export default getEventsByMonth;
+export default ctrlWrapper<IRequest>(getEventsByMonth);
